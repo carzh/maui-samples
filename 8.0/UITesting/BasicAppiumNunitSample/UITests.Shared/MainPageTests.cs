@@ -31,4 +31,10 @@ public class MainPageTests : BaseTest
 		App.GetScreenshot().SaveAsFile($"{nameof(ClickCounterTest)}.png");
 		Assert.That(element.Text, Is.EqualTo("Clicked 1 time"));
 	}
+
+    [Test]
+    public void testRun()
+    {
+        Assert.Equals(true, false);
+    }
 }

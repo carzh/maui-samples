@@ -9,4 +9,16 @@ public class PlatformSpecificSampleTest : BaseTest
 	{
 		App.GetScreenshot().SaveAsFile($"{nameof(SampleTest)}.png");
 	}
+
+	[Test]
+	public void testRun()
+	{
+		Assert.Equals(true, false);
+	}
+
+    [Test]
+    public void testWrite()
+    {
+		Console.WriteLine("hello");
+    }
 }

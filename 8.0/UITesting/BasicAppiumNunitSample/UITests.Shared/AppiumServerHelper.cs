@@ -1,4 +1,5 @@
 using OpenQA.Selenium.Appium.Service;
+using OpenQA.Selenium.Appium.Service.Options;
 
 namespace UITests;
 
@@ -17,12 +18,18 @@ public static class AppiumServerHelper
 			return;
 		}
 
-		var builder = new AppiumServiceBuilder()
-			.WithIPAddress(host)
-			.UsingPort(port);
+        var options = new OptionCollector();
+        options.AddArguments(new KeyValuePair<string, string>("--base-path", "/wd/hub"));
+         options.AddArguments(new KeyValuePair<string, string>("--log-level", "debug"));
 
-		// Start the server with the builder
-		_appiumLocalService = builder.Build();
+		var builder = new AppiumServiceBuilder()
+     .WithIPAddress(host)
+     .UsingPort(port)
+			 .WithLogFile(new FileInfo(@"C:\Users\carolinezhu\Documents\cowboy-coding\appium-server-logs"))
+			.WithArguments(options);
+
+        // Start the server with the builder
+        _appiumLocalService = builder.Build();
 		_appiumLocalService.Start();
 	}
 
